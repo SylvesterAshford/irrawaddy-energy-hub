@@ -1,12 +1,29 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Hero from "@/components/Hero";
+import MyanmarMap from "@/components/MyanmarMap";
+import ThreeJSScene from "@/components/ThreeJSScene";
+import EnergyTimeline from "@/components/EnergyTimeline";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Hero />
+      <MyanmarMap />
+      <ThreeJSScene />
+      <EnergyTimeline />
+      
+      {/* Footer */}
+      <footer className="py-12 border-t border-border">
+        <div className="container px-4">
+          <div className="text-center">
+            <h3 className="text-xl font-display font-bold mb-2 text-gradient-primary">
+              4D SNPP Proposal
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Advanced nuclear energy solutions for Myanmar's sustainable industrial development
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
