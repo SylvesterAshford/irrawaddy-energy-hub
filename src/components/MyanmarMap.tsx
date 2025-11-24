@@ -5,14 +5,20 @@ import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 
 // Add your Mapbox token here
-const MAPBOX_TOKEN = "YOUR_MAPBOX_TOKEN_HERE";
+const MAPBOX_TOKEN =
+  "pk.eyJ1Ijoic3lsdmVzdGVyLTY5IiwiYSI6ImNtaWN5cGJ1dzAwazIya3Nmdmd1aGhoZXoifQ.hTqUhAqeRX40oi9LP7O2BQ";
 
 const MyanmarMap = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
 
   useEffect(() => {
-    if (!mapContainer.current || !MAPBOX_TOKEN || MAPBOX_TOKEN === "YOUR_MAPBOX_TOKEN_HERE") return;
+    if (
+      !mapContainer.current ||
+      !MAPBOX_TOKEN ||
+      MAPBOX_TOKEN === "YOUR_MAPBOX_TOKEN_HERE"
+    )
+      return;
 
     mapboxgl.accessToken = MAPBOX_TOKEN;
 
@@ -160,7 +166,9 @@ const MyanmarMap = () => {
             <div className="p-4 bg-card border border-border rounded-lg">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-3 h-3 rounded-full bg-primary glow-primary" />
-                <span className="text-sm font-semibold text-primary">Irrawaddy River</span>
+                <span className="text-sm font-semibold text-primary">
+                  Irrawaddy River
+                </span>
               </div>
               <p className="text-xs text-muted-foreground">
                 Primary water source for cooling systems
@@ -170,7 +178,9 @@ const MyanmarMap = () => {
             <div className="p-4 bg-card border border-border rounded-lg">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-3 h-3 rounded-full bg-accent glow-accent" />
-                <span className="text-sm font-semibold text-accent">SNPP Sites</span>
+                <span className="text-sm font-semibold text-accent">
+                  SNPP Sites
+                </span>
               </div>
               <p className="text-xs text-muted-foreground">
                 Optimal locations along the river corridor
@@ -180,7 +190,9 @@ const MyanmarMap = () => {
             <div className="p-4 bg-card border border-border rounded-lg">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-3 h-3 rounded-full bg-success" />
-                <span className="text-sm font-semibold text-success">Industrial Zones</span>
+                <span className="text-sm font-semibold text-success">
+                  Industrial Zones
+                </span>
               </div>
               <p className="text-xs text-muted-foreground">
                 Connected manufacturing and processing facilities
