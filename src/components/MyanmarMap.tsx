@@ -13,12 +13,7 @@ const MyanmarMap = () => {
   const map = useRef<mapboxgl.Map | null>(null);
 
   useEffect(() => {
-    if (
-      !mapContainer.current ||
-      !MAPBOX_TOKEN ||
-      MAPBOX_TOKEN === "YOUR_MAPBOX_TOKEN_HERE"
-    )
-      return;
+    if (!mapContainer.current || !MAPBOX_TOKEN) return;
 
     mapboxgl.accessToken = MAPBOX_TOKEN;
 
@@ -91,9 +86,9 @@ const MyanmarMap = () => {
 
       // Add optimal reactor locations (real cities along Irrawaddy River)
       const reactorLocations = [
-        { coordinates: [94.8, 20.9], name: "Chauk - Oil Field Region" },
-        { coordinates: [95.2, 18.8], name: "Pyay - Central Myanmar" },
-        { coordinates: [95.5, 17.6], name: "Hinthada - Delta Region" },
+        { coordinates: [94.8205, 20.8941], name: "Chauk - Oil Field Region" },
+        { coordinates: [95.2222, 18.8246], name: "Pyay - Central Myanmar" },
+        { coordinates: [95.4516, 17.6470], name: "Hinthada - Delta Region" },
       ];
 
       reactorLocations.forEach((location, index) => {
