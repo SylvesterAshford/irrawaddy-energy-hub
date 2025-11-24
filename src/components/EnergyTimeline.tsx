@@ -25,7 +25,7 @@ const EnergyTimeline = () => {
   const currentData = data[currentHour[0]];
 
   return (
-    <section className="py-20 bg-secondary/30">
+    <section className="py-12 md:py-20 bg-secondary/30">
       <div className="container px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -34,13 +34,13 @@ const EnergyTimeline = () => {
           viewport={{ once: true }}
         >
           <div className="flex items-center gap-3 mb-6">
-            <Clock className="w-8 h-8 text-primary" />
-            <h2 className="text-3xl md:text-4xl font-display font-bold">
+            <Clock className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+            <h2 className="text-2xl md:text-4xl font-display font-bold">
               Time-Based Energy Optimization
             </h2>
           </div>
 
-          <div className="bg-card border border-border rounded-xl p-6 mb-6">
+          <div className="bg-card border border-border rounded-xl p-4 md:p-6 mb-6">
             <div className="mb-8">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-sm font-semibold text-muted-foreground">Current Time</span>
@@ -57,7 +57,7 @@ const EnergyTimeline = () => {
               />
             </div>
 
-            <div className="grid md:grid-cols-4 gap-4 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -123,7 +123,7 @@ const EnergyTimeline = () => {
               </motion.div>
             </div>
 
-            <div className="h-[400px]">
+            <div className="h-[300px] md:h-[400px]">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={data}>
                   <defs>
@@ -191,7 +191,7 @@ const EnergyTimeline = () => {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 bg-card border border-border rounded-lg">
               <h3 className="font-display font-semibold mb-2 text-primary">Peak Hours (8AM-8PM)</h3>
               <p className="text-sm text-muted-foreground">

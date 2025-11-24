@@ -36,19 +36,19 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 tracking-tight">
+          <h1 className="text-4xl md:text-7xl font-display font-bold mb-6 tracking-tight">
             <span className="text-gradient-primary">4D SNPP</span>
             <br />
             <span className="text-foreground">Regional Development</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed px-4">
             Revolutionizing Myanmar's industrial landscape through{" "}
             <span className="text-primary font-semibold">Small Nuclear Power Plants</span> with
             spatial optimization and time-based energy management
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-12 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-4xl mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
