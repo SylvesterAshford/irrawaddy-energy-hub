@@ -1,27 +1,20 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { motion } from "framer-motion";
-import { MapPin, Info } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { MapPin } from "lucide-react";
+
+// Add your Mapbox token here
+const MAPBOX_TOKEN = "YOUR_MAPBOX_TOKEN_HERE";
 
 const MyanmarMap = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
-  const [mapboxToken, setMapboxToken] = useState("");
-  const [isTokenSet, setIsTokenSet] = useState(false);
-
-  const handleSetToken = () => {
-    if (mapboxToken.trim()) {
-      setIsTokenSet(true);
-    }
-  };
 
   useEffect(() => {
-    if (!mapContainer.current || !isTokenSet) return;
+    if (!mapContainer.current || !MAPBOX_TOKEN || MAPBOX_TOKEN === "YOUR_MAPBOX_TOKEN_HERE") return;
 
-    mapboxgl.accessToken = mapboxToken;
+    mapboxgl.accessToken = MAPBOX_TOKEN;
 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
@@ -90,11 +83,11 @@ const MyanmarMap = () => {
         },
       });
 
-      // Add optimal reactor locations
+      // Add optimal reactor locations (real cities along Irrawaddy River)
       const reactorLocations = [
-        { coordinates: [96.2, 22.0], name: "Site A - Mandalay Region" },
-        { coordinates: [96.1, 21.2], name: "Site B - Magway Region" },
-        { coordinates: [95.3, 19.8], name: "Site C - Bago Region" },
+        { coordinates: [94.8, 20.9], name: "Chauk - Oil Field Region" },
+        { coordinates: [95.2, 18.8], name: "Pyay - Central Myanmar" },
+        { coordinates: [95.5, 17.6], name: "Hinthada - Delta Region" },
       ];
 
       reactorLocations.forEach((location, index) => {
@@ -141,67 +134,10 @@ const MyanmarMap = () => {
     return () => {
       map.current?.remove();
     };
-  }, [isTokenSet, mapboxToken]);
-
-  if (!isTokenSet) {
-    return (
-      <section className="py-20 bg-secondary/30">
-        <div className="container px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <MapPin className="w-8 h-8 text-primary" />
-              <h2 className="text-3xl md:text-4xl font-display font-bold">
-                Myanmar Strategic Locations
-              </h2>
-            </div>
-
-            <div className="bg-card border border-border rounded-xl p-8 max-w-2xl mx-auto">
-              <div className="flex items-start gap-3 mb-6 p-4 bg-primary/10 border border-primary/20 rounded-lg">
-                <Info className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <div className="text-sm text-muted-foreground">
-                  To view the interactive map, please enter your Mapbox public token.
-                  Get it from{" "}
-                  <a
-                    href="https://account.mapbox.com/access-tokens/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline"
-                  >
-                    mapbox.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <Input
-                  type="text"
-                  placeholder="Enter Mapbox public token (pk.xxxxx...)"
-                  value={mapboxToken}
-                  onChange={(e) => setMapboxToken(e.target.value)}
-                  className="font-mono text-sm"
-                />
-                <Button
-                  onClick={handleSetToken}
-                  disabled={!mapboxToken.trim()}
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-                >
-                  Load Interactive Map
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    );
-  }
+  }, []);
 
   return (
-    <section className="py-20 bg-secondary/30">
+    <section className="py-12 md:py-20 bg-secondary/30">
       <div className="container px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -210,17 +146,17 @@ const MyanmarMap = () => {
           viewport={{ once: true }}
         >
           <div className="flex items-center gap-3 mb-6">
-            <MapPin className="w-8 h-8 text-primary" />
-            <h2 className="text-3xl md:text-4xl font-display font-bold">
+            <MapPin className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+            <h2 className="text-2xl md:text-4xl font-display font-bold">
               Myanmar Strategic Locations
             </h2>
           </div>
 
           <div className="bg-card border border-primary/30 rounded-xl overflow-hidden glow-primary">
-            <div ref={mapContainer} className="w-full h-[600px]" />
+            <div ref={mapContainer} className="w-full h-[400px] md:h-[600px]" />
           </div>
 
-          <div className="mt-6 grid md:grid-cols-3 gap-4">
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 bg-card border border-border rounded-lg">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-3 h-3 rounded-full bg-primary glow-primary" />
